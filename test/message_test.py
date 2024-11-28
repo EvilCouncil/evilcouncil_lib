@@ -8,4 +8,4 @@ class TestMessage(unittest.TestCase):
         note = notification.Notification(msg="test message")
         actual_msg = note.get_message()
         self.assertEqual(actual_msg, '{"message": "test message"}')
-        self.assertEqual(note.get_routing_key(), routing_keys.RoutingKeys.notification)
+        self.assertEqual(note.get_routing_key(), routing_keys.RoutingKeys.NOTIFICATION)

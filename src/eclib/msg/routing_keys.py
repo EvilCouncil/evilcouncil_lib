@@ -1,14 +1,20 @@
+""" Routing keys for messages. """
+
 import enum
 
 
 class RoutingKeys(enum.StrEnum):
-    notification = "messaging.evilcouncil.notification"
-    http_log_collection = "infra.log_collect.http"
-    docker_log_collection = "infra.log_collect.docker"
-    malware_urls = "infra.malware.urls"
+    """Broadcast keys."""
+
+    NOTIFICATION = "messaging.evilcouncil.notification"
+    HTTP_LOG_COLLECTION = "infra.log_collect.http"
+    DOCKER_LOG_COLLECTION = "infra.log_collect.docker"
+    MALWARE_URLS = "infra.malware.urls"
 
 
 class ConsumerKeys(enum.StrEnum):
-    infra_all = "infra.#"
-    infra_log_collect = "infra.log_collect.#"
-    malare_urls = "infra.malware.urls"
+    """Consumer keys."""
+
+    INFRA_ALL = "infra.#"
+    INFRA_LOG_COLLECT = "infra.log_collect.#"
+    MALARE_URLS = "infra.malware.urls"

@@ -1,7 +1,10 @@
+""" Base class for """
+
 import abc
-from . import message
+from ..msg import message
 
 
+# pylint: disable=too-few-public-methods
 class ECPublisher(abc.ABC):
     """Base class for EC publishers."""
 

@@ -1,14 +1,18 @@
-from . import config_loader
-from . import config_constants
+"""Download yaml file for config parsing."""
 
 import requests
 import yaml
 
+from . import config_loader
+from . import config_constants
 
+
+# pylint: disable=too-few-public-methods
 class HttpYamlConfigLoader(config_loader.ConfigLoader):
+    """Download yaml configs for parsing."""
 
     def __init__(self, config_url: str):
-        response = requests.get(config_url)
+        response = requests.get(config_url, timeout=10)
         response.raise_for_status()
         self._data = yaml.safe_load(response.text)
 
@@ -16,12 +20,12 @@ class HttpYamlConfigLoader(config_loader.ConfigLoader):
         data = self._data
         for kp in key.split("."):
             val = data.get(kp, None)
-            if val == None:
+            if val is None:
                 raise ValueError
 
-            elif type(val) == dict:
+            if isinstance(val, dict):
                 data = val
             else:
                 return val
-        else:
-            raise ValueError
+
+        raise ValueError
